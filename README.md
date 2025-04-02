@@ -5,3 +5,6 @@ docker build -f Dockerfile.web -t upp_web --progress plain .
 docker run -p 80:80 -v /var/run/docker.sock:/var/run/docker.sock upp_web
 
 docker-compose up --build
+
+Open link bellow to see results:
+http://localhost:8080
