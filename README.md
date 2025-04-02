@@ -1,9 +1,7 @@
-```
-mkdir build
-cd build
-```
+docker build -f Dockerfile.app -t upprpo --progress plain .
 
-версия Visual Studio может отличаться
-```
-cmake .. -G "Visual Studio 16 2019"
-```
+docker build -f Dockerfile.web -t upp_web --progress plain .
+
+docker run -p 80:80 -v /var/run/docker.sock:/var/run/docker.sock upp_web
+
+docker-compose up --build
