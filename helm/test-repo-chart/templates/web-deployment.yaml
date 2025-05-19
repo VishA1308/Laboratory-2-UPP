@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-upp
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: web-upp
+  template:
+    metadata:
+      labels:
+        app: web-upp
+    spec:
+      serviceAccountName: upp-account
+      containers:
+      - name: web-upp
+        image: {{ .Values.web.image.repository }}:{{ .Values.web.image.tag }}
+        ports:
+        - containerPort: {{ .Values.service.targetPort }}
+        imagePullPolicy: {{ .Values.web.image.pullPolicy }}
+        securityContext:
+          privileged: true

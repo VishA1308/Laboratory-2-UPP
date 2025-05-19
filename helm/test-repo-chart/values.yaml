@@ -1,0 +1,19 @@
+replicaCount: 1
+
+image:
+  repository: visha1308/test-repo-app
+  tag: latest
+  pullPolicy: Always
+
+web:
+  image:
+    repository: visha1308/test-repo-web
+    tag: latest
+    pullPolicy: Always
+
+service:
+  enabled: true
+  name: web-service
+  type: LoadBalancer
+  port: 80
+  targetPort: 80

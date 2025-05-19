@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-upp
+spec:
+  selector:
+    matchLabels:
+      app: web-upp
+  replicas: 1 
+  template:
+    metadata:
+      labels:
+        app: web-upp
+    spec:
+      serviceAccountName: upp-account
+      containers:
+      - name: web-upp
+        image: visha1308/test-repo-web:latest
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Always
+        securityContext:
+          privileged: true
+    
+
+        
